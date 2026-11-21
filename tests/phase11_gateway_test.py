@@ -120,8 +120,12 @@ class Phone:
     def send(self, msg_type, message):
         """Send a command (request_id set by the caller). Returns the time it was sent."""
         frame = framing.encode(pb.CHANNEL_COMMAND, msg_type, message.SerializeToString(), 1 << 20)
+        # The time is taken before the frame leaves. The gateway answers a ping in well under a
+        # millisecond, so a time taken afterwards can be later than the reply, and reply_to()
+        # would then not count that reply as the answer.
+        sent = time.monotonic()
         asyncio.run_coroutine_threadsafe(self._ws.send(frame), self._loop).result(2.0)
-        return time.monotonic()
+        return sent
 
     def reply_to(self, request_id, since=0.0):
         """(time, Reply) for that request, or None if it has not arrived."""
