@@ -144,7 +144,7 @@ class ModeTestDriver(NavDriver):
 
     def wait_sim(self, seconds):
         """Let simulation time pass without publishing any command."""
-        t0 = self.sim_time
+        t0 = self.wait_clock()
         wall0 = time.time()
         while self.sim_time - t0 < seconds and time.time() - wall0 < seconds * 5 + 10:
             self.spin()

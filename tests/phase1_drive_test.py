@@ -104,6 +104,16 @@ class Driver(Node):
     def spin(self, seconds=0.02):
         rclpy.spin_once(self, timeout_sec=seconds)
 
+    def wait_clock(self, limit=30.0):
+        """The simulator's time, once the first clock message is in. A node that has just started can
+        get it seconds after its first sensor data, so nothing may count on sim_time before this."""
+        end = time.time() + limit
+        while self.sim_time is None:
+            if time.time() > end:
+                raise RuntimeError(f"no clock message from the simulator after {limit:.0f} s")
+            self.spin()
+        return self.sim_time
+
     def pose(self):
         p, q = self.odom.pose.pose.position, self.odom.pose.pose.orientation
         return p.x, p.y, yaw_of(q)
@@ -119,7 +129,7 @@ class Driver(Node):
 
     def run_for(self, v, w, sim_seconds, wall_timeout=120.0):
         """Hold a command for a duration measured in simulation time."""
-        t0, wall0 = self.sim_time, time.time()
+        t0, wall0 = self.wait_clock(), time.time()
         peak_v = 0.0
         while self.sim_time - t0 < sim_seconds:
             self.cmd(v, w)
