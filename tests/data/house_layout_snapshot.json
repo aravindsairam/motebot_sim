@@ -1,0 +1,4570 @@
+{
+ "constants": {
+  "WALL_T": 0.1,
+  "WALL_H": 2.4,
+  "DOOR_H": 2.0,
+  "FLOOR_T": 0.1,
+  "LIVING_ROOM": [
+   0.0,
+   0.0,
+   5.0,
+   4.5
+  ],
+  "BEDROOM": [
+   5.1,
+   0.0,
+   8.6,
+   4.5
+  ],
+  "DOORWAY": [
+   5.0,
+   2.6,
+   5.1,
+   3.4
+  ],
+  "STAIRWELL": [
+   5.15,
+   4.6,
+   5.95,
+   5.4
+  ],
+  "STAIRWELL_DROP": 0.15,
+  "ROOMS": {
+   "living_room": [
+    0.0,
+    0.0,
+    5.0,
+    4.5
+   ],
+   "bedroom": [
+    5.1,
+    0.0,
+    8.6,
+    4.5
+   ]
+  },
+  "FLOOR_TYPES": {
+   "living_room": "hardwood",
+   "bedroom": "carpet"
+  },
+  "START_POSE_HOUSE": [
+   0.45,
+   2.25,
+   0.0
+  ],
+  "DOCK_Y": 2.25,
+  "DOCK_TOWER": [
+   0.0,
+   2.14,
+   0.06,
+   2.36
+  ],
+  "DOCK_TOWER_H": 0.16,
+  "DOCK_PLATE": [
+   0.06,
+   2.11,
+   0.3,
+   2.39
+  ],
+  "DOCK_TAG_FAMILY": "36h11",
+  "DOCK_TAG_ID": 0,
+  "DOCK_TAG_SIZE": 0.1,
+  "DOCK_TAG_TEXTURE": "textures/apriltag_36h11_0.png",
+  "DOCK_TAG_HOUSE": [
+   0.06,
+   2.25,
+   0.075
+  ],
+  "MATERIALS": {
+   "floor_wood": [
+    [
+     0.55,
+     0.38,
+     0.22
+    ],
+    0.55
+   ],
+   "floor_carpet": [
+    [
+     0.42,
+     0.45,
+     0.52
+    ],
+    0.95
+   ],
+   "wall": [
+    [
+     0.92,
+     0.9,
+     0.86
+    ],
+    0.9
+   ],
+   "sofa": [
+    [
+     0.25,
+     0.33,
+     0.45
+    ],
+    0.9
+   ],
+   "wood_dark": [
+    [
+     0.3,
+     0.2,
+     0.13
+    ],
+    0.5
+   ],
+   "wood_light": [
+    [
+     0.72,
+     0.58,
+     0.4
+    ],
+    0.5
+   ],
+   "metal": [
+    [
+     0.55,
+     0.56,
+     0.58
+    ],
+    0.3
+   ],
+   "fabric_light": [
+    [
+     0.85,
+     0.83,
+     0.78
+    ],
+    0.9
+   ],
+   "rug": [
+    [
+     0.62,
+     0.25,
+     0.22
+    ],
+    0.95
+   ],
+   "plant_pot": [
+    [
+     0.75,
+     0.42,
+     0.28
+    ],
+    0.7
+   ],
+   "plant_leaf": [
+    [
+     0.18,
+     0.42,
+     0.2
+    ],
+    0.8
+   ],
+   "screen": [
+    [
+     0.04,
+     0.04,
+     0.05
+    ],
+    0.2
+   ],
+   "dock": [
+    [
+     0.1,
+     0.1,
+     0.12
+    ],
+    0.4
+   ]
+  },
+  "ROBOT_RADIUS": 0.171,
+  "WHEEL_RADIUS": 0.03575,
+  "WHEEL_SEPARATION": 0.233,
+  "MAX_LINEAR_SPEED": 0.306,
+  "MAX_ANGULAR_SPEED": 1.9,
+  "LIDAR_BACKEND": "raycast",
+  "LIDAR_BEAMS": 720,
+  "LIDAR_XYZ": [
+   0.0,
+   0.0,
+   0.115
+  ],
+  "LIDAR_MIN_RANGE": 0.05,
+  "LIDAR_MAX_RANGE": 12.0,
+  "LIDAR_RATE_HZ": 10.0,
+  "CAMERA_XYZ": [
+   0.165,
+   0.0,
+   0.07
+  ],
+  "CAMERA_WIDTH": 640,
+  "CAMERA_HEIGHT": 480,
+  "CAMERA_HFOV_DEG": 87.0,
+  "CAMERA_RATE_HZ": 15.0,
+  "CLIFF_SENSORS": {
+   "cliff_front_left": [
+    0.16,
+    0.045
+   ],
+   "cliff_front_right": [
+    0.16,
+    -0.045
+   ],
+   "cliff_side_left": [
+    0.06,
+    0.145
+   ],
+   "cliff_side_right": [
+    0.06,
+    -0.145
+   ]
+  },
+  "CLIFF_RAY_Z": 0.012,
+  "CLIFF_MAX_RANGE": 0.25,
+  "CLIFF_THRESHOLD": 0.05,
+  "CASTER_X": 0.125,
+  "BUMPER_ZONES": [
+   [
+    "right",
+    16,
+    -100.0,
+    -54.0
+   ],
+   [
+    "front_right",
+    8,
+    -54.0,
+    -18.0
+   ],
+   [
+    "front_center",
+    4,
+    -18.0,
+    18.0
+   ],
+   [
+    "front_left",
+    2,
+    18.0,
+    54.0
+   ],
+   [
+    "left",
+    1,
+    54.0,
+    100.0
+   ]
+  ],
+  "WHEEL_CMD_TOPIC": "cmd_vel_safe",
+  "BASE_CMD_TIMEOUT": 0.5,
+  "MAX_LINEAR_ACCEL": 0.9,
+  "MAX_LINEAR_DECEL": 4.5,
+  "MAX_ANGULAR_ACCEL": 6.0
+ },
+ "floors": [
+  {
+   "class": "Box",
+   "name": "floor_collision",
+   "group": "Floor",
+   "x0": -0.1,
+   "y0": -0.1,
+   "x1": 8.7,
+   "y1": 4.6,
+   "z0": -0.1,
+   "z1": 0.0,
+   "material": "floor_wood",
+   "collide": true,
+   "floor_type": "",
+   "visible": false
+  },
+  {
+   "class": "Box",
+   "name": "living_room_floor",
+   "group": "Floor",
+   "x0": -0.1,
+   "y0": -0.1,
+   "x1": 5.05,
+   "y1": 4.6,
+   "z0": -0.1,
+   "z1": 0.0,
+   "material": "floor_wood",
+   "collide": false,
+   "floor_type": "hardwood",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "bedroom_floor",
+   "group": "Floor",
+   "x0": 5.05,
+   "y0": -0.1,
+   "x1": 8.7,
+   "y1": 4.6,
+   "z0": -0.1,
+   "z1": 0.0,
+   "material": "floor_carpet",
+   "collide": false,
+   "floor_type": "carpet",
+   "visible": true
+  }
+ ],
+ "walls": [
+  {
+   "class": "Box",
+   "name": "wall_south",
+   "group": "Walls",
+   "x0": -0.1,
+   "y0": -0.1,
+   "x1": 8.7,
+   "y1": 0.0,
+   "z0": 0.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wall_north_west",
+   "group": "Walls",
+   "x0": -0.1,
+   "y0": 4.5,
+   "x1": 5.15,
+   "y1": 4.6,
+   "z0": 0.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wall_north_east",
+   "group": "Walls",
+   "x0": 5.95,
+   "y0": 4.5,
+   "x1": 8.7,
+   "y1": 4.6,
+   "z0": 0.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "stairwell_lintel",
+   "group": "Walls",
+   "x0": 5.15,
+   "y0": 4.5,
+   "x1": 5.95,
+   "y1": 4.6,
+   "z0": 2.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wall_west",
+   "group": "Walls",
+   "x0": -0.1,
+   "y0": 0.0,
+   "x1": 0.0,
+   "y1": 4.5,
+   "z0": 0.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wall_east",
+   "group": "Walls",
+   "x0": 8.6,
+   "y0": 0.0,
+   "x1": 8.7,
+   "y1": 4.5,
+   "z0": 0.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wall_divider_south",
+   "group": "Walls",
+   "x0": 5.0,
+   "y0": 0.0,
+   "x1": 5.1,
+   "y1": 2.6,
+   "z0": 0.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wall_divider_north",
+   "group": "Walls",
+   "x0": 5.0,
+   "y0": 3.4,
+   "x1": 5.1,
+   "y1": 4.5,
+   "z0": 0.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "door_lintel",
+   "group": "Walls",
+   "x0": 5.0,
+   "y0": 2.6,
+   "x1": 5.1,
+   "y1": 3.4,
+   "z0": 2.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "stairwell_floor",
+   "group": "Walls",
+   "x0": 5.050000000000001,
+   "y0": 4.6,
+   "x1": 6.05,
+   "y1": 5.5,
+   "z0": -0.25,
+   "z1": -0.15,
+   "material": "floor_wood",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "stairwell_wall_west",
+   "group": "Walls",
+   "x0": 5.050000000000001,
+   "y0": 4.6,
+   "x1": 5.15,
+   "y1": 5.4,
+   "z0": -0.15,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "stairwell_wall_east",
+   "group": "Walls",
+   "x0": 5.95,
+   "y0": 4.6,
+   "x1": 6.05,
+   "y1": 5.4,
+   "z0": -0.15,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "stairwell_wall_north",
+   "group": "Walls",
+   "x0": 5.050000000000001,
+   "y0": 5.4,
+   "x1": 6.05,
+   "y1": 5.5,
+   "z0": -0.15,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  }
+ ],
+ "furniture": [
+  {
+   "class": "Box",
+   "name": "sofa_base",
+   "group": "Furniture",
+   "x0": 1.2,
+   "y0": 0.05,
+   "x1": 3.2,
+   "y1": 0.95,
+   "z0": 0.0,
+   "z1": 0.42,
+   "material": "sofa",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "sofa_back",
+   "group": "Furniture",
+   "x0": 1.2,
+   "y0": 0.05,
+   "x1": 3.2,
+   "y1": 0.3,
+   "z0": 0.42,
+   "z1": 0.85,
+   "material": "sofa",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "sofa_arm_left",
+   "group": "Furniture",
+   "x0": 1.2,
+   "y0": 0.3,
+   "x1": 1.4,
+   "y1": 0.95,
+   "z0": 0.42,
+   "z1": 0.62,
+   "material": "sofa",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "sofa_arm_right",
+   "group": "Furniture",
+   "x0": 3.0,
+   "y0": 0.3,
+   "x1": 3.2,
+   "y1": 0.95,
+   "z0": 0.42,
+   "z1": 0.62,
+   "material": "sofa",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "tv_stand",
+   "group": "Furniture",
+   "x0": 1.4,
+   "y0": 4.05,
+   "x1": 3.0,
+   "y1": 4.45,
+   "z0": 0.0,
+   "z1": 0.5,
+   "material": "wood_dark",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "tv_screen",
+   "group": "Furniture",
+   "x0": 1.6,
+   "y0": 4.2,
+   "x1": 2.8,
+   "y1": 4.26,
+   "z0": 0.55,
+   "z1": 1.25,
+   "material": "screen",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "armchair_base",
+   "group": "Furniture",
+   "x0": 3.9,
+   "y0": 0.2,
+   "x1": 4.7,
+   "y1": 1.0,
+   "z0": 0.0,
+   "z1": 0.42,
+   "material": "fabric_light",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "armchair_back",
+   "group": "Furniture",
+   "x0": 3.9,
+   "y0": 0.2,
+   "x1": 4.7,
+   "y1": 0.4,
+   "z0": 0.42,
+   "z1": 0.85,
+   "material": "fabric_light",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "rug",
+   "group": "Furniture",
+   "x0": 1.3,
+   "y0": 1.1,
+   "x1": 3.1,
+   "y1": 2.4,
+   "z0": 0.001,
+   "z1": 0.005,
+   "material": "rug",
+   "collide": false,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Cylinder",
+   "name": "plant_pot",
+   "group": "Furniture",
+   "x": 4.6,
+   "y": 4.1,
+   "radius": 0.2,
+   "z0": 0.0,
+   "z1": 0.4,
+   "material": "plant_pot",
+   "collide": true
+  },
+  {
+   "class": "Cylinder",
+   "name": "plant_leaves",
+   "group": "Furniture",
+   "x": 4.6,
+   "y": 4.1,
+   "radius": 0.3,
+   "z0": 0.4,
+   "z1": 1.2,
+   "material": "plant_leaf",
+   "collide": false
+  },
+  {
+   "class": "Box",
+   "name": "bed_frame",
+   "group": "Furniture",
+   "x0": 6.55,
+   "y0": 0.6,
+   "x1": 8.55,
+   "y1": 2.2,
+   "z0": 0.0,
+   "z1": 0.3,
+   "material": "wood_light",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "bed_mattress",
+   "group": "Furniture",
+   "x0": 6.6,
+   "y0": 0.65,
+   "x1": 8.45,
+   "y1": 2.15,
+   "z0": 0.3,
+   "z1": 0.5,
+   "material": "fabric_light",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "bed_headboard",
+   "group": "Furniture",
+   "x0": 8.45,
+   "y0": 0.6,
+   "x1": 8.55,
+   "y1": 2.2,
+   "z0": 0.3,
+   "z1": 1.0,
+   "material": "wood_light",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "nightstand_south",
+   "group": "Furniture",
+   "x0": 8.1,
+   "y0": 0.08,
+   "x1": 8.55,
+   "y1": 0.53,
+   "z0": 0.0,
+   "z1": 0.5,
+   "material": "wood_dark",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "nightstand_north",
+   "group": "Furniture",
+   "x0": 8.1,
+   "y0": 2.27,
+   "x1": 8.55,
+   "y1": 2.72,
+   "z0": 0.0,
+   "z1": 0.5,
+   "material": "wood_dark",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wardrobe",
+   "group": "Furniture",
+   "x0": 6.0,
+   "y0": 3.85,
+   "x1": 7.8,
+   "y1": 4.45,
+   "z0": 0.0,
+   "z1": 2.0,
+   "material": "wood_light",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "coffee_table_top",
+   "group": "Furniture",
+   "x0": 1.7,
+   "y0": 1.4,
+   "x1": 2.7,
+   "y1": 2.0,
+   "z0": 0.4,
+   "z1": 0.44,
+   "material": "wood_light",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "coffee_table_leg_0",
+   "group": "Furniture",
+   "x0": 1.73,
+   "y0": 1.43,
+   "x1": 1.77,
+   "y1": 1.47,
+   "z0": 0.0,
+   "z1": 0.4,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "coffee_table_leg_1",
+   "group": "Furniture",
+   "x0": 2.6300000000000003,
+   "y0": 1.43,
+   "x1": 2.6700000000000004,
+   "y1": 1.47,
+   "z0": 0.0,
+   "z1": 0.4,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "coffee_table_leg_2",
+   "group": "Furniture",
+   "x0": 1.73,
+   "y0": 1.93,
+   "x1": 1.77,
+   "y1": 1.97,
+   "z0": 0.0,
+   "z1": 0.4,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "coffee_table_leg_3",
+   "group": "Furniture",
+   "x0": 2.6300000000000003,
+   "y0": 1.93,
+   "x1": 2.6700000000000004,
+   "y1": 1.97,
+   "z0": 0.0,
+   "z1": 0.4,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "desk_top",
+   "group": "Furniture",
+   "x0": 5.15,
+   "y0": 0.05,
+   "x1": 6.05,
+   "y1": 0.65,
+   "z0": 0.72,
+   "z1": 0.75,
+   "material": "wood_dark",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "desk_leg_0",
+   "group": "Furniture",
+   "x0": 5.180000000000001,
+   "y0": 0.08,
+   "x1": 5.220000000000001,
+   "y1": 0.12,
+   "z0": 0.0,
+   "z1": 0.72,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "desk_leg_1",
+   "group": "Furniture",
+   "x0": 5.9799999999999995,
+   "y0": 0.08,
+   "x1": 6.02,
+   "y1": 0.12,
+   "z0": 0.0,
+   "z1": 0.72,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "desk_leg_2",
+   "group": "Furniture",
+   "x0": 5.180000000000001,
+   "y0": 0.58,
+   "x1": 5.220000000000001,
+   "y1": 0.62,
+   "z0": 0.0,
+   "z1": 0.72,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "desk_leg_3",
+   "group": "Furniture",
+   "x0": 5.9799999999999995,
+   "y0": 0.58,
+   "x1": 6.02,
+   "y1": 0.62,
+   "z0": 0.0,
+   "z1": 0.72,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  }
+ ],
+ "dock": [
+  {
+   "class": "Box",
+   "name": "dock_tower",
+   "group": "Dock",
+   "x0": 0.0,
+   "y0": 2.14,
+   "x1": 0.06,
+   "y1": 2.36,
+   "z0": 0.0,
+   "z1": 0.16,
+   "material": "dock",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "dock_plate",
+   "group": "Dock",
+   "x0": 0.06,
+   "y0": 2.11,
+   "x1": 0.3,
+   "y1": 2.39,
+   "z0": 0.0,
+   "z1": 0.003,
+   "material": "dock",
+   "collide": false,
+   "floor_type": "",
+   "visible": true
+  }
+ ],
+ "all_shapes": [
+  {
+   "class": "Box",
+   "name": "floor_collision",
+   "group": "Floor",
+   "x0": -0.1,
+   "y0": -0.1,
+   "x1": 8.7,
+   "y1": 4.6,
+   "z0": -0.1,
+   "z1": 0.0,
+   "material": "floor_wood",
+   "collide": true,
+   "floor_type": "",
+   "visible": false
+  },
+  {
+   "class": "Box",
+   "name": "living_room_floor",
+   "group": "Floor",
+   "x0": -0.1,
+   "y0": -0.1,
+   "x1": 5.05,
+   "y1": 4.6,
+   "z0": -0.1,
+   "z1": 0.0,
+   "material": "floor_wood",
+   "collide": false,
+   "floor_type": "hardwood",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "bedroom_floor",
+   "group": "Floor",
+   "x0": 5.05,
+   "y0": -0.1,
+   "x1": 8.7,
+   "y1": 4.6,
+   "z0": -0.1,
+   "z1": 0.0,
+   "material": "floor_carpet",
+   "collide": false,
+   "floor_type": "carpet",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wall_south",
+   "group": "Walls",
+   "x0": -0.1,
+   "y0": -0.1,
+   "x1": 8.7,
+   "y1": 0.0,
+   "z0": 0.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wall_north_west",
+   "group": "Walls",
+   "x0": -0.1,
+   "y0": 4.5,
+   "x1": 5.15,
+   "y1": 4.6,
+   "z0": 0.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wall_north_east",
+   "group": "Walls",
+   "x0": 5.95,
+   "y0": 4.5,
+   "x1": 8.7,
+   "y1": 4.6,
+   "z0": 0.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "stairwell_lintel",
+   "group": "Walls",
+   "x0": 5.15,
+   "y0": 4.5,
+   "x1": 5.95,
+   "y1": 4.6,
+   "z0": 2.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wall_west",
+   "group": "Walls",
+   "x0": -0.1,
+   "y0": 0.0,
+   "x1": 0.0,
+   "y1": 4.5,
+   "z0": 0.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wall_east",
+   "group": "Walls",
+   "x0": 8.6,
+   "y0": 0.0,
+   "x1": 8.7,
+   "y1": 4.5,
+   "z0": 0.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wall_divider_south",
+   "group": "Walls",
+   "x0": 5.0,
+   "y0": 0.0,
+   "x1": 5.1,
+   "y1": 2.6,
+   "z0": 0.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wall_divider_north",
+   "group": "Walls",
+   "x0": 5.0,
+   "y0": 3.4,
+   "x1": 5.1,
+   "y1": 4.5,
+   "z0": 0.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "door_lintel",
+   "group": "Walls",
+   "x0": 5.0,
+   "y0": 2.6,
+   "x1": 5.1,
+   "y1": 3.4,
+   "z0": 2.0,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "stairwell_floor",
+   "group": "Walls",
+   "x0": 5.050000000000001,
+   "y0": 4.6,
+   "x1": 6.05,
+   "y1": 5.5,
+   "z0": -0.25,
+   "z1": -0.15,
+   "material": "floor_wood",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "stairwell_wall_west",
+   "group": "Walls",
+   "x0": 5.050000000000001,
+   "y0": 4.6,
+   "x1": 5.15,
+   "y1": 5.4,
+   "z0": -0.15,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "stairwell_wall_east",
+   "group": "Walls",
+   "x0": 5.95,
+   "y0": 4.6,
+   "x1": 6.05,
+   "y1": 5.4,
+   "z0": -0.15,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "stairwell_wall_north",
+   "group": "Walls",
+   "x0": 5.050000000000001,
+   "y0": 5.4,
+   "x1": 6.05,
+   "y1": 5.5,
+   "z0": -0.15,
+   "z1": 2.4,
+   "material": "wall",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "sofa_base",
+   "group": "Furniture",
+   "x0": 1.2,
+   "y0": 0.05,
+   "x1": 3.2,
+   "y1": 0.95,
+   "z0": 0.0,
+   "z1": 0.42,
+   "material": "sofa",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "sofa_back",
+   "group": "Furniture",
+   "x0": 1.2,
+   "y0": 0.05,
+   "x1": 3.2,
+   "y1": 0.3,
+   "z0": 0.42,
+   "z1": 0.85,
+   "material": "sofa",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "sofa_arm_left",
+   "group": "Furniture",
+   "x0": 1.2,
+   "y0": 0.3,
+   "x1": 1.4,
+   "y1": 0.95,
+   "z0": 0.42,
+   "z1": 0.62,
+   "material": "sofa",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "sofa_arm_right",
+   "group": "Furniture",
+   "x0": 3.0,
+   "y0": 0.3,
+   "x1": 3.2,
+   "y1": 0.95,
+   "z0": 0.42,
+   "z1": 0.62,
+   "material": "sofa",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "tv_stand",
+   "group": "Furniture",
+   "x0": 1.4,
+   "y0": 4.05,
+   "x1": 3.0,
+   "y1": 4.45,
+   "z0": 0.0,
+   "z1": 0.5,
+   "material": "wood_dark",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "tv_screen",
+   "group": "Furniture",
+   "x0": 1.6,
+   "y0": 4.2,
+   "x1": 2.8,
+   "y1": 4.26,
+   "z0": 0.55,
+   "z1": 1.25,
+   "material": "screen",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "armchair_base",
+   "group": "Furniture",
+   "x0": 3.9,
+   "y0": 0.2,
+   "x1": 4.7,
+   "y1": 1.0,
+   "z0": 0.0,
+   "z1": 0.42,
+   "material": "fabric_light",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "armchair_back",
+   "group": "Furniture",
+   "x0": 3.9,
+   "y0": 0.2,
+   "x1": 4.7,
+   "y1": 0.4,
+   "z0": 0.42,
+   "z1": 0.85,
+   "material": "fabric_light",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "rug",
+   "group": "Furniture",
+   "x0": 1.3,
+   "y0": 1.1,
+   "x1": 3.1,
+   "y1": 2.4,
+   "z0": 0.001,
+   "z1": 0.005,
+   "material": "rug",
+   "collide": false,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Cylinder",
+   "name": "plant_pot",
+   "group": "Furniture",
+   "x": 4.6,
+   "y": 4.1,
+   "radius": 0.2,
+   "z0": 0.0,
+   "z1": 0.4,
+   "material": "plant_pot",
+   "collide": true
+  },
+  {
+   "class": "Cylinder",
+   "name": "plant_leaves",
+   "group": "Furniture",
+   "x": 4.6,
+   "y": 4.1,
+   "radius": 0.3,
+   "z0": 0.4,
+   "z1": 1.2,
+   "material": "plant_leaf",
+   "collide": false
+  },
+  {
+   "class": "Box",
+   "name": "bed_frame",
+   "group": "Furniture",
+   "x0": 6.55,
+   "y0": 0.6,
+   "x1": 8.55,
+   "y1": 2.2,
+   "z0": 0.0,
+   "z1": 0.3,
+   "material": "wood_light",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "bed_mattress",
+   "group": "Furniture",
+   "x0": 6.6,
+   "y0": 0.65,
+   "x1": 8.45,
+   "y1": 2.15,
+   "z0": 0.3,
+   "z1": 0.5,
+   "material": "fabric_light",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "bed_headboard",
+   "group": "Furniture",
+   "x0": 8.45,
+   "y0": 0.6,
+   "x1": 8.55,
+   "y1": 2.2,
+   "z0": 0.3,
+   "z1": 1.0,
+   "material": "wood_light",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "nightstand_south",
+   "group": "Furniture",
+   "x0": 8.1,
+   "y0": 0.08,
+   "x1": 8.55,
+   "y1": 0.53,
+   "z0": 0.0,
+   "z1": 0.5,
+   "material": "wood_dark",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "nightstand_north",
+   "group": "Furniture",
+   "x0": 8.1,
+   "y0": 2.27,
+   "x1": 8.55,
+   "y1": 2.72,
+   "z0": 0.0,
+   "z1": 0.5,
+   "material": "wood_dark",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "wardrobe",
+   "group": "Furniture",
+   "x0": 6.0,
+   "y0": 3.85,
+   "x1": 7.8,
+   "y1": 4.45,
+   "z0": 0.0,
+   "z1": 2.0,
+   "material": "wood_light",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "coffee_table_top",
+   "group": "Furniture",
+   "x0": 1.7,
+   "y0": 1.4,
+   "x1": 2.7,
+   "y1": 2.0,
+   "z0": 0.4,
+   "z1": 0.44,
+   "material": "wood_light",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "coffee_table_leg_0",
+   "group": "Furniture",
+   "x0": 1.73,
+   "y0": 1.43,
+   "x1": 1.77,
+   "y1": 1.47,
+   "z0": 0.0,
+   "z1": 0.4,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "coffee_table_leg_1",
+   "group": "Furniture",
+   "x0": 2.6300000000000003,
+   "y0": 1.43,
+   "x1": 2.6700000000000004,
+   "y1": 1.47,
+   "z0": 0.0,
+   "z1": 0.4,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "coffee_table_leg_2",
+   "group": "Furniture",
+   "x0": 1.73,
+   "y0": 1.93,
+   "x1": 1.77,
+   "y1": 1.97,
+   "z0": 0.0,
+   "z1": 0.4,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "coffee_table_leg_3",
+   "group": "Furniture",
+   "x0": 2.6300000000000003,
+   "y0": 1.93,
+   "x1": 2.6700000000000004,
+   "y1": 1.97,
+   "z0": 0.0,
+   "z1": 0.4,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "desk_top",
+   "group": "Furniture",
+   "x0": 5.15,
+   "y0": 0.05,
+   "x1": 6.05,
+   "y1": 0.65,
+   "z0": 0.72,
+   "z1": 0.75,
+   "material": "wood_dark",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "desk_leg_0",
+   "group": "Furniture",
+   "x0": 5.180000000000001,
+   "y0": 0.08,
+   "x1": 5.220000000000001,
+   "y1": 0.12,
+   "z0": 0.0,
+   "z1": 0.72,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "desk_leg_1",
+   "group": "Furniture",
+   "x0": 5.9799999999999995,
+   "y0": 0.08,
+   "x1": 6.02,
+   "y1": 0.12,
+   "z0": 0.0,
+   "z1": 0.72,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "desk_leg_2",
+   "group": "Furniture",
+   "x0": 5.180000000000001,
+   "y0": 0.58,
+   "x1": 5.220000000000001,
+   "y1": 0.62,
+   "z0": 0.0,
+   "z1": 0.72,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "desk_leg_3",
+   "group": "Furniture",
+   "x0": 5.9799999999999995,
+   "y0": 0.58,
+   "x1": 6.02,
+   "y1": 0.62,
+   "z0": 0.0,
+   "z1": 0.72,
+   "material": "metal",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "dock_tower",
+   "group": "Dock",
+   "x0": 0.0,
+   "y0": 2.14,
+   "x1": 0.06,
+   "y1": 2.36,
+   "z0": 0.0,
+   "z1": 0.16,
+   "material": "dock",
+   "collide": true,
+   "floor_type": "",
+   "visible": true
+  },
+  {
+   "class": "Box",
+   "name": "dock_plate",
+   "group": "Dock",
+   "x0": 0.06,
+   "y0": 2.11,
+   "x1": 0.3,
+   "y1": 2.39,
+   "z0": 0.0,
+   "z1": 0.003,
+   "material": "dock",
+   "collide": false,
+   "floor_type": "",
+   "visible": true
+  }
+ ],
+ "obstacles_world": [
+  [
+   "wall_south",
+   -0.55,
+   -2.35,
+   8.25,
+   -2.25
+  ],
+  [
+   "wall_north_west",
+   -0.55,
+   2.25,
+   4.7,
+   2.3499999999999996
+  ],
+  [
+   "wall_north_east",
+   5.5,
+   2.25,
+   8.25,
+   2.3499999999999996
+  ],
+  [
+   "wall_west",
+   -0.55,
+   -2.25,
+   -0.45,
+   2.25
+  ],
+  [
+   "wall_east",
+   8.15,
+   -2.25,
+   8.25,
+   2.25
+  ],
+  [
+   "wall_divider_south",
+   4.55,
+   -2.25,
+   4.6499999999999995,
+   0.3500000000000001
+  ],
+  [
+   "wall_divider_north",
+   4.55,
+   1.15,
+   4.6499999999999995,
+   2.25
+  ],
+  [
+   "stairwell_floor",
+   4.6000000000000005,
+   2.3499999999999996,
+   5.6,
+   3.25
+  ],
+  [
+   "stairwell_wall_west",
+   4.6000000000000005,
+   2.3499999999999996,
+   4.7,
+   3.1500000000000004
+  ],
+  [
+   "stairwell_wall_east",
+   5.5,
+   2.3499999999999996,
+   5.6,
+   3.1500000000000004
+  ],
+  [
+   "stairwell_wall_north",
+   4.6000000000000005,
+   3.1500000000000004,
+   5.6,
+   3.25
+  ],
+  [
+   "sofa_base",
+   0.75,
+   -2.2,
+   2.75,
+   -1.3
+  ],
+  [
+   "tv_stand",
+   0.95,
+   1.7999999999999998,
+   2.55,
+   2.2
+  ],
+  [
+   "armchair_base",
+   3.4499999999999997,
+   -2.05,
+   4.25,
+   -1.25
+  ],
+  [
+   "bed_frame",
+   6.1,
+   -1.65,
+   8.100000000000001,
+   -0.04999999999999982
+  ],
+  [
+   "nightstand_south",
+   7.6499999999999995,
+   -2.17,
+   8.100000000000001,
+   -1.72
+  ],
+  [
+   "nightstand_north",
+   7.6499999999999995,
+   0.020000000000000018,
+   8.100000000000001,
+   0.4700000000000002
+  ],
+  [
+   "wardrobe",
+   5.55,
+   1.6,
+   7.35,
+   2.2
+  ],
+  [
+   "coffee_table_leg_0",
+   1.28,
+   -0.8200000000000001,
+   1.32,
+   -0.78
+  ],
+  [
+   "coffee_table_leg_1",
+   2.18,
+   -0.8200000000000001,
+   2.22,
+   -0.78
+  ],
+  [
+   "coffee_table_leg_2",
+   1.28,
+   -0.32000000000000006,
+   1.32,
+   -0.28
+  ],
+  [
+   "coffee_table_leg_3",
+   2.18,
+   -0.32000000000000006,
+   2.22,
+   -0.28
+  ],
+  [
+   "desk_leg_0",
+   4.73,
+   -2.17,
+   4.7700000000000005,
+   -2.13
+  ],
+  [
+   "desk_leg_1",
+   5.529999999999999,
+   -2.17,
+   5.569999999999999,
+   -2.13
+  ],
+  [
+   "desk_leg_2",
+   4.73,
+   -1.67,
+   4.7700000000000005,
+   -1.63
+  ],
+  [
+   "desk_leg_3",
+   5.529999999999999,
+   -1.67,
+   5.569999999999999,
+   -1.63
+  ],
+  [
+   "dock_tower",
+   -0.45,
+   -0.10999999999999988,
+   -0.39,
+   0.10999999999999988
+  ]
+ ],
+ "shapes_at_height": {
+  "0.0": [
+   [
+    [
+     -0.55,
+     -2.35,
+     8.25,
+     -2.25
+    ],
+    [
+     -0.55,
+     2.25,
+     4.7,
+     2.3499999999999996
+    ],
+    [
+     5.5,
+     2.25,
+     8.25,
+     2.3499999999999996
+    ],
+    [
+     -0.55,
+     -2.25,
+     -0.45,
+     2.25
+    ],
+    [
+     8.15,
+     -2.25,
+     8.25,
+     2.25
+    ],
+    [
+     4.55,
+     -2.25,
+     4.6499999999999995,
+     0.3500000000000001
+    ],
+    [
+     4.55,
+     1.15,
+     4.6499999999999995,
+     2.25
+    ],
+    [
+     4.6000000000000005,
+     2.3499999999999996,
+     4.7,
+     3.1500000000000004
+    ],
+    [
+     5.5,
+     2.3499999999999996,
+     5.6,
+     3.1500000000000004
+    ],
+    [
+     4.6000000000000005,
+     3.1500000000000004,
+     5.6,
+     3.25
+    ],
+    [
+     0.75,
+     -2.2,
+     2.75,
+     -1.3
+    ],
+    [
+     0.95,
+     1.7999999999999998,
+     2.55,
+     2.2
+    ],
+    [
+     3.4499999999999997,
+     -2.05,
+     4.25,
+     -1.25
+    ],
+    [
+     6.1,
+     -1.65,
+     8.100000000000001,
+     -0.04999999999999982
+    ],
+    [
+     7.6499999999999995,
+     -2.17,
+     8.100000000000001,
+     -1.72
+    ],
+    [
+     7.6499999999999995,
+     0.020000000000000018,
+     8.100000000000001,
+     0.4700000000000002
+    ],
+    [
+     5.55,
+     1.6,
+     7.35,
+     2.2
+    ],
+    [
+     1.28,
+     -0.8200000000000001,
+     1.32,
+     -0.78
+    ],
+    [
+     2.18,
+     -0.8200000000000001,
+     2.22,
+     -0.78
+    ],
+    [
+     1.28,
+     -0.32000000000000006,
+     1.32,
+     -0.28
+    ],
+    [
+     2.18,
+     -0.32000000000000006,
+     2.22,
+     -0.28
+    ],
+    [
+     4.73,
+     -2.17,
+     4.7700000000000005,
+     -2.13
+    ],
+    [
+     5.529999999999999,
+     -2.17,
+     5.569999999999999,
+     -2.13
+    ],
+    [
+     4.73,
+     -1.67,
+     4.7700000000000005,
+     -1.63
+    ],
+    [
+     5.529999999999999,
+     -1.67,
+     5.569999999999999,
+     -1.63
+    ],
+    [
+     -0.45,
+     -0.10999999999999988,
+     -0.39,
+     0.10999999999999988
+    ]
+   ],
+   [
+    [
+     4.1499999999999995,
+     1.8499999999999996,
+     0.2
+    ]
+   ]
+  ],
+  "0.05": [
+   [
+    [
+     -0.55,
+     -2.35,
+     8.25,
+     -2.25
+    ],
+    [
+     -0.55,
+     2.25,
+     4.7,
+     2.3499999999999996
+    ],
+    [
+     5.5,
+     2.25,
+     8.25,
+     2.3499999999999996
+    ],
+    [
+     -0.55,
+     -2.25,
+     -0.45,
+     2.25
+    ],
+    [
+     8.15,
+     -2.25,
+     8.25,
+     2.25
+    ],
+    [
+     4.55,
+     -2.25,
+     4.6499999999999995,
+     0.3500000000000001
+    ],
+    [
+     4.55,
+     1.15,
+     4.6499999999999995,
+     2.25
+    ],
+    [
+     4.6000000000000005,
+     2.3499999999999996,
+     4.7,
+     3.1500000000000004
+    ],
+    [
+     5.5,
+     2.3499999999999996,
+     5.6,
+     3.1500000000000004
+    ],
+    [
+     4.6000000000000005,
+     3.1500000000000004,
+     5.6,
+     3.25
+    ],
+    [
+     0.75,
+     -2.2,
+     2.75,
+     -1.3
+    ],
+    [
+     0.95,
+     1.7999999999999998,
+     2.55,
+     2.2
+    ],
+    [
+     3.4499999999999997,
+     -2.05,
+     4.25,
+     -1.25
+    ],
+    [
+     6.1,
+     -1.65,
+     8.100000000000001,
+     -0.04999999999999982
+    ],
+    [
+     7.6499999999999995,
+     -2.17,
+     8.100000000000001,
+     -1.72
+    ],
+    [
+     7.6499999999999995,
+     0.020000000000000018,
+     8.100000000000001,
+     0.4700000000000002
+    ],
+    [
+     5.55,
+     1.6,
+     7.35,
+     2.2
+    ],
+    [
+     1.28,
+     -0.8200000000000001,
+     1.32,
+     -0.78
+    ],
+    [
+     2.18,
+     -0.8200000000000001,
+     2.22,
+     -0.78
+    ],
+    [
+     1.28,
+     -0.32000000000000006,
+     1.32,
+     -0.28
+    ],
+    [
+     2.18,
+     -0.32000000000000006,
+     2.22,
+     -0.28
+    ],
+    [
+     4.73,
+     -2.17,
+     4.7700000000000005,
+     -2.13
+    ],
+    [
+     5.529999999999999,
+     -2.17,
+     5.569999999999999,
+     -2.13
+    ],
+    [
+     4.73,
+     -1.67,
+     4.7700000000000005,
+     -1.63
+    ],
+    [
+     5.529999999999999,
+     -1.67,
+     5.569999999999999,
+     -1.63
+    ],
+    [
+     -0.45,
+     -0.10999999999999988,
+     -0.39,
+     0.10999999999999988
+    ]
+   ],
+   [
+    [
+     4.1499999999999995,
+     1.8499999999999996,
+     0.2
+    ]
+   ]
+  ],
+  "0.115": [
+   [
+    [
+     -0.55,
+     -2.35,
+     8.25,
+     -2.25
+    ],
+    [
+     -0.55,
+     2.25,
+     4.7,
+     2.3499999999999996
+    ],
+    [
+     5.5,
+     2.25,
+     8.25,
+     2.3499999999999996
+    ],
+    [
+     -0.55,
+     -2.25,
+     -0.45,
+     2.25
+    ],
+    [
+     8.15,
+     -2.25,
+     8.25,
+     2.25
+    ],
+    [
+     4.55,
+     -2.25,
+     4.6499999999999995,
+     0.3500000000000001
+    ],
+    [
+     4.55,
+     1.15,
+     4.6499999999999995,
+     2.25
+    ],
+    [
+     4.6000000000000005,
+     2.3499999999999996,
+     4.7,
+     3.1500000000000004
+    ],
+    [
+     5.5,
+     2.3499999999999996,
+     5.6,
+     3.1500000000000004
+    ],
+    [
+     4.6000000000000005,
+     3.1500000000000004,
+     5.6,
+     3.25
+    ],
+    [
+     0.75,
+     -2.2,
+     2.75,
+     -1.3
+    ],
+    [
+     0.95,
+     1.7999999999999998,
+     2.55,
+     2.2
+    ],
+    [
+     3.4499999999999997,
+     -2.05,
+     4.25,
+     -1.25
+    ],
+    [
+     6.1,
+     -1.65,
+     8.100000000000001,
+     -0.04999999999999982
+    ],
+    [
+     7.6499999999999995,
+     -2.17,
+     8.100000000000001,
+     -1.72
+    ],
+    [
+     7.6499999999999995,
+     0.020000000000000018,
+     8.100000000000001,
+     0.4700000000000002
+    ],
+    [
+     5.55,
+     1.6,
+     7.35,
+     2.2
+    ],
+    [
+     1.28,
+     -0.8200000000000001,
+     1.32,
+     -0.78
+    ],
+    [
+     2.18,
+     -0.8200000000000001,
+     2.22,
+     -0.78
+    ],
+    [
+     1.28,
+     -0.32000000000000006,
+     1.32,
+     -0.28
+    ],
+    [
+     2.18,
+     -0.32000000000000006,
+     2.22,
+     -0.28
+    ],
+    [
+     4.73,
+     -2.17,
+     4.7700000000000005,
+     -2.13
+    ],
+    [
+     5.529999999999999,
+     -2.17,
+     5.569999999999999,
+     -2.13
+    ],
+    [
+     4.73,
+     -1.67,
+     4.7700000000000005,
+     -1.63
+    ],
+    [
+     5.529999999999999,
+     -1.67,
+     5.569999999999999,
+     -1.63
+    ],
+    [
+     -0.45,
+     -0.10999999999999988,
+     -0.39,
+     0.10999999999999988
+    ]
+   ],
+   [
+    [
+     4.1499999999999995,
+     1.8499999999999996,
+     0.2
+    ]
+   ]
+  ],
+  "0.3": [
+   [
+    [
+     -0.55,
+     -2.35,
+     8.25,
+     -2.25
+    ],
+    [
+     -0.55,
+     2.25,
+     4.7,
+     2.3499999999999996
+    ],
+    [
+     5.5,
+     2.25,
+     8.25,
+     2.3499999999999996
+    ],
+    [
+     -0.55,
+     -2.25,
+     -0.45,
+     2.25
+    ],
+    [
+     8.15,
+     -2.25,
+     8.25,
+     2.25
+    ],
+    [
+     4.55,
+     -2.25,
+     4.6499999999999995,
+     0.3500000000000001
+    ],
+    [
+     4.55,
+     1.15,
+     4.6499999999999995,
+     2.25
+    ],
+    [
+     4.6000000000000005,
+     2.3499999999999996,
+     4.7,
+     3.1500000000000004
+    ],
+    [
+     5.5,
+     2.3499999999999996,
+     5.6,
+     3.1500000000000004
+    ],
+    [
+     4.6000000000000005,
+     3.1500000000000004,
+     5.6,
+     3.25
+    ],
+    [
+     0.75,
+     -2.2,
+     2.75,
+     -1.3
+    ],
+    [
+     0.95,
+     1.7999999999999998,
+     2.55,
+     2.2
+    ],
+    [
+     3.4499999999999997,
+     -2.05,
+     4.25,
+     -1.25
+    ],
+    [
+     6.1,
+     -1.65,
+     8.100000000000001,
+     -0.04999999999999982
+    ],
+    [
+     6.1499999999999995,
+     -1.6,
+     7.999999999999999,
+     -0.10000000000000009
+    ],
+    [
+     7.999999999999999,
+     -1.65,
+     8.100000000000001,
+     -0.04999999999999982
+    ],
+    [
+     7.6499999999999995,
+     -2.17,
+     8.100000000000001,
+     -1.72
+    ],
+    [
+     7.6499999999999995,
+     0.020000000000000018,
+     8.100000000000001,
+     0.4700000000000002
+    ],
+    [
+     5.55,
+     1.6,
+     7.35,
+     2.2
+    ],
+    [
+     1.28,
+     -0.8200000000000001,
+     1.32,
+     -0.78
+    ],
+    [
+     2.18,
+     -0.8200000000000001,
+     2.22,
+     -0.78
+    ],
+    [
+     1.28,
+     -0.32000000000000006,
+     1.32,
+     -0.28
+    ],
+    [
+     2.18,
+     -0.32000000000000006,
+     2.22,
+     -0.28
+    ],
+    [
+     4.73,
+     -2.17,
+     4.7700000000000005,
+     -2.13
+    ],
+    [
+     5.529999999999999,
+     -2.17,
+     5.569999999999999,
+     -2.13
+    ],
+    [
+     4.73,
+     -1.67,
+     4.7700000000000005,
+     -1.63
+    ],
+    [
+     5.529999999999999,
+     -1.67,
+     5.569999999999999,
+     -1.63
+    ]
+   ],
+   [
+    [
+     4.1499999999999995,
+     1.8499999999999996,
+     0.2
+    ]
+   ]
+  ],
+  "0.5": [
+   [
+    [
+     -0.55,
+     -2.35,
+     8.25,
+     -2.25
+    ],
+    [
+     -0.55,
+     2.25,
+     4.7,
+     2.3499999999999996
+    ],
+    [
+     5.5,
+     2.25,
+     8.25,
+     2.3499999999999996
+    ],
+    [
+     -0.55,
+     -2.25,
+     -0.45,
+     2.25
+    ],
+    [
+     8.15,
+     -2.25,
+     8.25,
+     2.25
+    ],
+    [
+     4.55,
+     -2.25,
+     4.6499999999999995,
+     0.3500000000000001
+    ],
+    [
+     4.55,
+     1.15,
+     4.6499999999999995,
+     2.25
+    ],
+    [
+     4.6000000000000005,
+     2.3499999999999996,
+     4.7,
+     3.1500000000000004
+    ],
+    [
+     5.5,
+     2.3499999999999996,
+     5.6,
+     3.1500000000000004
+    ],
+    [
+     4.6000000000000005,
+     3.1500000000000004,
+     5.6,
+     3.25
+    ],
+    [
+     0.75,
+     -2.2,
+     2.75,
+     -1.95
+    ],
+    [
+     0.75,
+     -1.95,
+     0.95,
+     -1.3
+    ],
+    [
+     2.55,
+     -1.95,
+     2.75,
+     -1.3
+    ],
+    [
+     0.95,
+     1.7999999999999998,
+     2.55,
+     2.2
+    ],
+    [
+     3.4499999999999997,
+     -2.05,
+     4.25,
+     -1.85
+    ],
+    [
+     6.1499999999999995,
+     -1.6,
+     7.999999999999999,
+     -0.10000000000000009
+    ],
+    [
+     7.999999999999999,
+     -1.65,
+     8.100000000000001,
+     -0.04999999999999982
+    ],
+    [
+     7.6499999999999995,
+     -2.17,
+     8.100000000000001,
+     -1.72
+    ],
+    [
+     7.6499999999999995,
+     0.020000000000000018,
+     8.100000000000001,
+     0.4700000000000002
+    ],
+    [
+     5.55,
+     1.6,
+     7.35,
+     2.2
+    ],
+    [
+     4.73,
+     -2.17,
+     4.7700000000000005,
+     -2.13
+    ],
+    [
+     5.529999999999999,
+     -2.17,
+     5.569999999999999,
+     -2.13
+    ],
+    [
+     4.73,
+     -1.67,
+     4.7700000000000005,
+     -1.63
+    ],
+    [
+     5.529999999999999,
+     -1.67,
+     5.569999999999999,
+     -1.63
+    ]
+   ],
+   []
+  ],
+  "1.0": [
+   [
+    [
+     -0.55,
+     -2.35,
+     8.25,
+     -2.25
+    ],
+    [
+     -0.55,
+     2.25,
+     4.7,
+     2.3499999999999996
+    ],
+    [
+     5.5,
+     2.25,
+     8.25,
+     2.3499999999999996
+    ],
+    [
+     -0.55,
+     -2.25,
+     -0.45,
+     2.25
+    ],
+    [
+     8.15,
+     -2.25,
+     8.25,
+     2.25
+    ],
+    [
+     4.55,
+     -2.25,
+     4.6499999999999995,
+     0.3500000000000001
+    ],
+    [
+     4.55,
+     1.15,
+     4.6499999999999995,
+     2.25
+    ],
+    [
+     4.6000000000000005,
+     2.3499999999999996,
+     4.7,
+     3.1500000000000004
+    ],
+    [
+     5.5,
+     2.3499999999999996,
+     5.6,
+     3.1500000000000004
+    ],
+    [
+     4.6000000000000005,
+     3.1500000000000004,
+     5.6,
+     3.25
+    ],
+    [
+     1.1500000000000001,
+     1.9500000000000002,
+     2.3499999999999996,
+     2.01
+    ],
+    [
+     7.999999999999999,
+     -1.65,
+     8.100000000000001,
+     -0.04999999999999982
+    ],
+    [
+     5.55,
+     1.6,
+     7.35,
+     2.2
+    ]
+   ],
+   []
+  ],
+  "2.2": [
+   [
+    [
+     -0.55,
+     -2.35,
+     8.25,
+     -2.25
+    ],
+    [
+     -0.55,
+     2.25,
+     4.7,
+     2.3499999999999996
+    ],
+    [
+     5.5,
+     2.25,
+     8.25,
+     2.3499999999999996
+    ],
+    [
+     4.7,
+     2.25,
+     5.5,
+     2.3499999999999996
+    ],
+    [
+     -0.55,
+     -2.25,
+     -0.45,
+     2.25
+    ],
+    [
+     8.15,
+     -2.25,
+     8.25,
+     2.25
+    ],
+    [
+     4.55,
+     -2.25,
+     4.6499999999999995,
+     0.3500000000000001
+    ],
+    [
+     4.55,
+     1.15,
+     4.6499999999999995,
+     2.25
+    ],
+    [
+     4.55,
+     0.3500000000000001,
+     4.6499999999999995,
+     1.15
+    ],
+    [
+     4.6000000000000005,
+     2.3499999999999996,
+     4.7,
+     3.1500000000000004
+    ],
+    [
+     5.5,
+     2.3499999999999996,
+     5.6,
+     3.1500000000000004
+    ],
+    [
+     4.6000000000000005,
+     3.1500000000000004,
+     5.6,
+     3.25
+    ]
+   ],
+   []
+  ]
+ },
+ "room_world": {
+  "living_room": [
+   -0.45,
+   -2.25,
+   4.55,
+   2.25
+  ],
+  "bedroom": [
+   4.6499999999999995,
+   -2.25,
+   8.15,
+   2.25
+  ]
+ },
+ "to_world": [
+  [
+   -0.45,
+   -2.25
+  ],
+  [
+   1.05,
+   -4.5
+  ],
+  [
+   8.15,
+   2.25
+  ]
+ ],
+ "to_house": [
+  [
+   0.45,
+   2.25
+  ],
+  [
+   1.95,
+   0.0
+  ],
+  [
+   9.049999999999999,
+   6.75
+  ]
+ ],
+ "expected_range": [
+  [
+   0.0,
+   0.0,
+   0.0,
+   4.55
+  ],
+  [
+   0.0,
+   0.0,
+   0.08726646259971647,
+   8.181131675978282
+  ],
+  [
+   0.0,
+   0.0,
+   0.17453292519943295,
+   8.275726886868823
+  ],
+  [
+   0.0,
+   0.0,
+   0.2617993877991494,
+   4.7105066208658775
+  ],
+  [
+   0.0,
+   0.0,
+   0.3490658503988659,
+   4.8420088647654
+  ],
+  [
+   0.0,
+   0.0,
+   0.4363323129985824,
+   4.358519829740931
+  ],
+  [
+   0.0,
+   0.0,
+   0.5235987755982988,
+   4.500000000000001
+  ],
+  [
+   0.0,
+   0.0,
+   0.6108652381980153,
+   3.922755290147471
+  ],
+  [
+   0.0,
+   0.0,
+   0.6981317007977318,
+   2.8003028883487424
+  ],
+  [
+   0.0,
+   0.0,
+   0.7853981633974483,
+   2.545584412271571
+  ],
+  [
+   0.0,
+   0.0,
+   0.8726646259971648,
+   2.3497331207981014
+  ],
+  [
+   0.0,
+   0.0,
+   0.9599310885968811,
+   2.197394259770621
+  ],
+  [
+   0.0,
+   0.0,
+   1.0471975511965976,
+   2.0784609690826525
+  ],
+  [
+   0.0,
+   0.0,
+   1.1344640137963142,
+   2.2478915039948735
+  ],
+  [
+   0.0,
+   0.0,
+   1.2217304763960306,
+   2.3943999880708025
+  ],
+  [
+   0.0,
+   0.0,
+   1.308996938995747,
+   2.329371405922687
+  ],
+  [
+   0.0,
+   0.0,
+   1.3962634015954636,
+   2.284709876742926
+  ],
+  [
+   0.0,
+   0.0,
+   1.4835298641951802,
+   2.2585946344725314
+  ],
+  [
+   0.0,
+   0.0,
+   1.5707963267948966,
+   2.25
+  ],
+  [
+   0.0,
+   0.0,
+   1.658062789394613,
+   2.2585946344725314
+  ],
+  [
+   0.0,
+   0.0,
+   1.7453292519943295,
+   2.284709876742926
+  ],
+  [
+   0.0,
+   0.0,
+   1.8325957145940461,
+   1.7386664873203224
+  ],
+  [
+   0.0,
+   0.0,
+   1.9198621771937623,
+   1.3157119800733903
+  ],
+  [
+   0.0,
+   0.0,
+   2.007128639793479,
+   1.0647907124186247
+  ],
+  [
+   0.0,
+   0.0,
+   2.0943951023931953,
+   0.9000000000000005
+  ],
+  [
+   0.0,
+   0.0,
+   2.181661564992912,
+   0.784551058029494
+  ],
+  [
+   0.0,
+   0.0,
+   2.2689280275926285,
+   0.7000757220871855
+  ],
+  [
+   0.0,
+   0.0,
+   2.356194490192345,
+   0.6363961030678928
+  ],
+  [
+   0.0,
+   0.0,
+   2.443460952792061,
+   0.5874332801995255
+  ],
+  [
+   0.0,
+   0.0,
+   2.530727415391778,
+   0.5493485649426552
+  ],
+  [
+   0.0,
+   0.0,
+   2.617993877991494,
+   0.5196152422706632
+  ],
+  [
+   0.0,
+   0.0,
+   2.705260340591211,
+   0.49652006353312134
+  ],
+  [
+   0.0,
+   0.0,
+   2.792526803190927,
+   0.4788799976141605
+  ],
+  [
+   0.0,
+   0.0,
+   2.879793265790644,
+   0.4037577103599324
+  ],
+  [
+   0.0,
+   0.0,
+   2.9670597283903604,
+   0.3960163786354406
+  ],
+  [
+   0.0,
+   0.0,
+   3.0543261909900767,
+   0.3914897366419055
+  ],
+  [
+   0.0,
+   0.0,
+   3.141592653589793,
+   0.39
+  ],
+  [
+   0.0,
+   0.0,
+   3.2288591161895095,
+   0.3914897366419055
+  ],
+  [
+   0.0,
+   0.0,
+   3.316125578789226,
+   0.39601637863544054
+  ],
+  [
+   0.0,
+   0.0,
+   3.4033920413889422,
+   0.40375771035993235
+  ],
+  [
+   0.0,
+   0.0,
+   3.490658503988659,
+   0.47887999761416045
+  ],
+  [
+   0.0,
+   0.0,
+   3.577924966588375,
+   0.4965200635331211
+  ],
+  [
+   0.0,
+   0.0,
+   3.6651914291880923,
+   0.5196152422706632
+  ],
+  [
+   0.0,
+   0.0,
+   3.752457891787808,
+   0.549348564942655
+  ],
+  [
+   0.0,
+   0.0,
+   3.8397243543875246,
+   0.5874332801995251
+  ],
+  [
+   0.0,
+   0.0,
+   3.9269908169872414,
+   0.6363961030678926
+  ],
+  [
+   0.0,
+   0.0,
+   4.014257279586958,
+   0.7000757220871854
+  ],
+  [
+   0.0,
+   0.0,
+   4.101523742186675,
+   0.7845510580294947
+  ],
+  [
+   0.0,
+   0.0,
+   4.1887902047863905,
+   0.8999999999999992
+  ],
+  [
+   0.0,
+   0.0,
+   4.276056667386107,
+   1.064790712418623
+  ],
+  [
+   0.0,
+   0.0,
+   4.363323129985824,
+   1.31571198007339
+  ],
+  [
+   0.0,
+   0.0,
+   4.4505895925855405,
+   1.738666487320324
+  ],
+  [
+   0.0,
+   0.0,
+   4.537856055185257,
+   2.284709876742926
+  ],
+  [
+   0.0,
+   0.0,
+   4.625122517784973,
+   2.2585946344725314
+  ],
+  [
+   0.0,
+   0.0,
+   4.71238898038469,
+   2.25
+  ],
+  [
+   0.0,
+   0.0,
+   4.799655442984406,
+   2.2585946344725314
+  ],
+  [
+   0.0,
+   0.0,
+   4.886921905584122,
+   2.284709876742926
+  ],
+  [
+   0.0,
+   0.0,
+   4.974188368183839,
+   2.3293714059226867
+  ],
+  [
+   0.0,
+   0.0,
+   5.061454830783556,
+   2.1928533001223136
+  ],
+  [
+   0.0,
+   0.0,
+   5.148721293383272,
+   1.7746511873643764
+  ],
+  [
+   0.0,
+   0.0,
+   5.235987755982988,
+   1.5011106998930264
+  ],
+  [
+   0.0,
+   0.0,
+   5.323254218582705,
+   1.5870069653898928
+  ],
+  [
+   0.0,
+   0.0,
+   5.410520681182422,
+   1.697029476131962
+  ],
+  [
+   0.0,
+   0.0,
+   5.497787143782138,
+   1.8384776310850233
+  ],
+  [
+   0.0,
+   0.0,
+   5.585053606381854,
+   2.0224409749185353
+  ],
+  [
+   0.0,
+   0.0,
+   5.672320068981571,
+   2.266480834307426
+  ],
+  [
+   0.0,
+   0.0,
+   5.759586531581288,
+   2.600000000000002
+  ],
+  [
+   0.0,
+   0.0,
+   5.8468529941810035,
+   3.8066538204205975
+  ],
+  [
+   0.0,
+   0.0,
+   5.934119456780721,
+   2.3199075439974886
+  ],
+  [
+   0.0,
+   0.0,
+   6.021385919380437,
+   4.7105066208658775
+  ],
+  [
+   0.0,
+   0.0,
+   6.1086523819801535,
+   4.6201910840801395
+  ],
+  [
+   0.0,
+   0.0,
+   6.19591884457987,
+   4.5673802608222305
+  ],
+  [
+   2.0,
+   1.0,
+   0.0,
+   6.15
+  ],
+  [
+   2.0,
+   1.0,
+   0.08726646259971647,
+   2.5597405857355358
+  ],
+  [
+   2.0,
+   1.0,
+   0.17453292519943295,
+   2.5893378603086497
+  ],
+  [
+   2.0,
+   1.0,
+   0.2617993877991494,
+   2.6399542600457115
+  ],
+  [
+   2.0,
+   1.0,
+   0.3490658503988659,
+   2.121369618125308
+  ],
+  [
+   2.0,
+   1.0,
+   0.4363323129985824,
+   2.163281006305561
+  ],
+  [
+   2.0,
+   1.0,
+   0.5235987755982988,
+   2.5000000000000004
+  ],
+  [
+   2.0,
+   1.0,
+   0.6108652381980153,
+   2.1793084945263725
+  ],
+  [
+   2.0,
+   1.0,
+   0.6981317007977318,
+   1.9446547835755157
+  ],
+  [
+   2.0,
+   1.0,
+   0.7853981633974483,
+   1.7677669529663689
+  ],
+  [
+   2.0,
+   1.0,
+   0.8726646259971648,
+   1.6317591116653483
+  ],
+  [
+   2.0,
+   1.0,
+   0.9599310885968811,
+   1.5259682359518203
+  ],
+  [
+   2.0,
+   1.0,
+   1.0471975511965976,
+   0.9237604307034011
+  ],
+  [
+   2.0,
+   1.0,
+   1.1344640137963142,
+   0.8827023351699932
+  ],
+  [
+   2.0,
+   1.0,
+   1.2217304763960306,
+   0.8513422179807296
+  ],
+  [
+   2.0,
+   1.0,
+   1.308996938995747,
+   0.8282209443280664
+  ],
+  [
+   2.0,
+   1.0,
+   1.3962634015954636,
+   0.8123412895085959
+  ],
+  [
+   2.0,
+   1.0,
+   1.4835298641951802,
+   0.8030558700346777
+  ],
+  [
+   2.0,
+   1.0,
+   1.5707963267948966,
+   0.7999999999999998
+  ],
+  [
+   2.0,
+   1.0,
+   1.658062789394613,
+   0.8030558700346777
+  ],
+  [
+   2.0,
+   1.0,
+   1.7453292519943295,
+   0.8123412895085959
+  ],
+  [
+   2.0,
+   1.0,
+   1.8325957145940461,
+   0.8282209443280663
+  ],
+  [
+   2.0,
+   1.0,
+   1.9198621771937623,
+   0.8513422179807295
+  ],
+  [
+   2.0,
+   1.0,
+   2.007128639793479,
+   0.8827023351699931
+  ],
+  [
+   2.0,
+   1.0,
+   2.0943951023931953,
+   0.923760430703401
+  ],
+  [
+   2.0,
+   1.0,
+   2.181661564992912,
+   0.9766196710091648
+  ],
+  [
+   2.0,
+   1.0,
+   2.2689280275926285,
+   1.0443258314658226
+  ],
+  [
+   2.0,
+   1.0,
+   2.356194490192345,
+   1.1313708498984758
+  ],
+  [
+   2.0,
+   1.0,
+   2.443460952792061,
+   1.2445790614883292
+  ],
+  [
+   2.0,
+   1.0,
+   2.530727415391778,
+   2.179308494526373
+  ],
+  [
+   2.0,
+   1.0,
+   2.617993877991494,
+   2.4999999999999982
+  ],
+  [
+   2.0,
+   1.0,
+   2.705260340591211,
+   2.703275901458105
+  ],
+  [
+   2.0,
+   1.0,
+   2.792526803190927,
+   2.607235542565985
+  ],
+  [
+   2.0,
+   1.0,
+   2.879793265790644,
+   2.5364266420047037
+  ],
+  [
+   2.0,
+   1.0,
+   2.9670597283903604,
+   2.4877951991200753
+  ],
+  [
+   2.0,
+   1.0,
+   3.0543261909900767,
+   2.4593586019812013
+  ],
+  [
+   2.0,
+   1.0,
+   3.141592653589793,
+   2.45
+  ],
+  [
+   2.0,
+   1.0,
+   3.2288591161895095,
+   2.4593586019812013
+  ],
+  [
+   2.0,
+   1.0,
+   3.316125578789226,
+   2.4877951991200753
+  ],
+  [
+   2.0,
+   1.0,
+   3.4033920413889422,
+   2.5364266420047032
+  ],
+  [
+   2.0,
+   1.0,
+   3.490658503988659,
+   2.6021859161451486
+  ],
+  [
+   2.0,
+   1.0,
+   3.577924966588375,
+   2.7032759014581043
+  ],
+  [
+   2.0,
+   1.0,
+   3.6651914291880923,
+   2.829016319029167
+  ],
+  [
+   2.0,
+   1.0,
+   3.752457891787808,
+   2.9908977424655667
+  ],
+  [
+   2.0,
+   1.0,
+   3.8397243543875246,
+   3.1982478588640815
+  ],
+  [
+   2.0,
+   1.0,
+   3.9269908169872414,
+   3.4648232278140823
+  ],
+  [
+   2.0,
+   1.0,
+   4.014257279586958,
+   3.8115233758080094
+  ],
+  [
+   2.0,
+   1.0,
+   4.101523742186675,
+   3.9675174134747304
+  ],
+  [
+   2.0,
+   1.0,
+   4.1887902047863905,
+   3.752776749732569
+  ],
+  [
+   2.0,
+   1.0,
+   4.276056667386107,
+   2.5377692136137315
+  ],
+  [
+   2.0,
+   1.0,
+   4.363323129985824,
+   2.4476088766945976
+  ],
+  [
+   2.0,
+   1.0,
+   4.4505895925855405,
+   2.381135214943191
+  ],
+  [
+   2.0,
+   1.0,
+   4.537856055185257,
+   2.3354812073372133
+  ],
+  [
+   2.0,
+   1.0,
+   4.625122517784973,
+   2.3087856263496986
+  ],
+  [
+   2.0,
+   1.0,
+   4.71238898038469,
+   2.3
+  ],
+  [
+   2.0,
+   1.0,
+   4.799655442984406,
+   2.3087856263496986
+  ],
+  [
+   2.0,
+   1.0,
+   4.886921905584122,
+   2.3354812073372133
+  ],
+  [
+   2.0,
+   1.0,
+   4.974188368183839,
+   2.3811352149431904
+  ],
+  [
+   2.0,
+   1.0,
+   5.061454830783556,
+   3.4585777605467145
+  ],
+  [
+   2.0,
+   1.0,
+   5.148721293383272,
+   3.585978236628097
+  ],
+  [
+   2.0,
+   1.0,
+   5.235987755982988,
+   2.9000000000000035
+  ],
+  [
+   2.0,
+   1.0,
+   5.323254218582705,
+   2.746742824713276
+  ],
+  [
+   2.0,
+   1.0,
+   5.410520681182422,
+   2.9371664009976266
+  ],
+  [
+   2.0,
+   1.0,
+   5.497787143782138,
+   3.1819805153394634
+  ],
+  [
+   2.0,
+   1.0,
+   5.585053606381854,
+   3.328788587797311
+  ],
+  [
+   2.0,
+   1.0,
+   5.672320068981571,
+   3.1129752013417136
+  ],
+  [
+   2.0,
+   1.0,
+   5.759586531581288,
+   2.9444863728670905
+  ],
+  [
+   2.0,
+   1.0,
+   5.8468529941810035,
+   2.8136136933543545
+  ],
+  [
+   2.0,
+   1.0,
+   5.934119456780721,
+   2.7136533198135755
+  ],
+  [
+   2.0,
+   1.0,
+   6.021385919380437,
+   2.6399542600457115
+  ],
+  [
+   2.0,
+   1.0,
+   6.1086523819801535,
+   6.046709007300813
+  ],
+  [
+   2.0,
+   1.0,
+   6.19591884457987,
+   6.081068020205011
+  ],
+  [
+   5.5,
+   0.5,
+   0.0,
+   2.6500000000000004
+  ],
+  [
+   5.5,
+   0.5,
+   0.08726646259971647,
+   2.6601225694898707
+  ],
+  [
+   5.5,
+   0.5,
+   0.17453292519943295,
+   2.690880521497225
+  ],
+  [
+   5.5,
+   0.5,
+   0.2617993877991494,
+   2.7434818780867203
+  ],
+  [
+   5.5,
+   0.5,
+   0.3490658503988659,
+   2.8200710970611675
+  ],
+  [
+   5.5,
+   0.5,
+   0.4363323129985824,
+   2.9239514852506034
+  ],
+  [
+   5.5,
+   0.5,
+   0.5235987755982988,
+   3.0599564267050168
+  ],
+  [
+   5.5,
+   0.5,
+   0.6108652381980153,
+   1.9177914751832081
+  ],
+  [
+   5.5,
+   0.5,
+   0.6981317007977318,
+   1.711296209546454
+  ],
+  [
+   5.5,
+   0.5,
+   0.7853981633974483,
+   1.5556349186104048
+  ],
+  [
+   5.5,
+   0.5,
+   0.8726646259971648,
+   1.4359480182655067
+  ],
+  [
+   5.5,
+   0.5,
+   0.9599310885968811,
+   1.342852047637602
+  ],
+  [
+   5.5,
+   0.5,
+   1.0471975511965976,
+   1.2701705922171769
+  ],
+  [
+   5.5,
+   0.5,
+   1.1344640137963142,
+   1.213715710858741
+  ],
+  [
+   5.5,
+   0.5,
+   1.2217304763960306,
+   1.1705955497235034
+  ],
+  [
+   5.5,
+   0.5,
+   1.308996938995747,
+   1.1388037984510915
+  ],
+  [
+   5.5,
+   0.5,
+   1.3962634015954636,
+   1.1169692730743197
+  ],
+  [
+   5.5,
+   0.5,
+   1.4835298641951802,
+   1.1042018212976823
+  ],
+  [
+   5.5,
+   0.5,
+   1.5707963267948966,
+   1.75
+  ],
+  [
+   5.5,
+   0.5,
+   1.658062789394613,
+   2.6601225694898707
+  ],
+  [
+   5.5,
+   0.5,
+   1.7453292519943295,
+   2.690880521497225
+  ],
+  [
+   5.5,
+   0.5,
+   1.8325957145940461,
+   2.7434818780867203
+  ],
+  [
+   5.5,
+   0.5,
+   1.9198621771937623,
+   2.339043520130471
+  ],
+  [
+   5.5,
+   0.5,
+   2.007128639793479,
+   1.9309113581843604
+  ],
+  [
+   5.5,
+   0.5,
+   2.0943951023931953,
+   1.7000000000000017
+  ],
+  [
+   5.5,
+   0.5,
+   2.181661564992912,
+   1.481929776277934
+  ],
+  [
+   5.5,
+   0.5,
+   2.2689280275926285,
+   1.3223652528313512
+  ],
+  [
+   5.5,
+   0.5,
+   2.356194490192345,
+   1.2020815280171318
+  ],
+  [
+   5.5,
+   0.5,
+   2.443460952792061,
+   1.1095961959324376
+  ],
+  [
+   5.5,
+   0.5,
+   2.530727415391778,
+   1.1332404171537138
+  ],
+  [
+   5.5,
+   0.5,
+   2.617993877991494,
+   3.499999999999998
+  ],
+  [
+   5.5,
+   0.5,
+   2.705260340591211,
+   3.254964860939351
+  ],
+  [
+   5.5,
+   0.5,
+   2.792526803190927,
+   3.8009457202120114
+  ],
+  [
+   5.5,
+   0.5,
+   2.879793265790644,
+   6.1598932734399945
+  ],
+  [
+   5.5,
+   0.5,
+   2.9670597283903604,
+   6.041788340720183
+  ],
+  [
+   5.5,
+   0.5,
+   3.0543261909900767,
+   5.972728033382917
+  ],
+  [
+   5.5,
+   0.5,
+   3.141592653589793,
+   5.95
+  ],
+  [
+   5.5,
+   0.5,
+   3.2288591161895095,
+   5.912498843130316
+  ],
+  [
+   5.5,
+   0.5,
+   3.316125578789226,
+   0.8638155724715462
+  ],
+  [
+   5.5,
+   0.5,
+   3.4033920413889422,
+   0.8799847533485711
+  ],
+  [
+   5.5,
+   0.5,
+   3.490658503988659,
+   0.9045511066045259
+  ],
+  [
+   5.5,
+   0.5,
+   3.577924966588375,
+   0.9378712311181182
+  ],
+  [
+   5.5,
+   0.5,
+   3.6651914291880923,
+   0.9814954576223645
+  ],
+  [
+   5.5,
+   0.5,
+   3.752457891787808,
+   1.037658400447238
+  ],
+  [
+   5.5,
+   0.5,
+   3.8397243543875246,
+   1.109596195932437
+  ],
+  [
+   5.5,
+   0.5,
+   3.9269908169872414,
+   1.2020815280171313
+  ],
+  [
+   5.5,
+   0.5,
+   4.014257279586958,
+   1.322365252831351
+  ],
+  [
+   5.5,
+   0.5,
+   4.101523742186675,
+   1.4819297762779353
+  ],
+  [
+   5.5,
+   0.5,
+   4.1887902047863905,
+   1.6999999999999995
+  ],
+  [
+   5.5,
+   0.5,
+   4.276056667386107,
+   2.0112713456796225
+  ],
+  [
+   5.5,
+   0.5,
+   4.363323129985824,
+   2.4852337401386273
+  ],
+  [
+   5.5,
+   0.5,
+   4.4505895925855405,
+   2.847009496127728
+  ],
+  [
+   5.5,
+   0.5,
+   4.537856055185257,
+   2.792423182685799
+  ],
+  [
+   5.5,
+   0.5,
+   4.625122517784973,
+   2.760504553244205
+  ],
+  [
+   5.5,
+   0.5,
+   4.71238898038469,
+   2.75
+  ],
+  [
+   5.5,
+   0.5,
+   4.799655442984406,
+   2.760504553244205
+  ],
+  [
+   5.5,
+   0.5,
+   4.886921905584122,
+   2.7924231826857984
+  ],
+  [
+   5.5,
+   0.5,
+   4.974188368183839,
+   2.847009496127728
+  ],
+  [
+   5.5,
+   0.5,
+   5.061454830783556,
+   1.75428264009785
+  ],
+  [
+   5.5,
+   0.5,
+   5.148721293383272,
+   1.4197209498915002
+  ],
+  [
+   5.5,
+   0.5,
+   5.235987755982988,
+   1.2000000000000008
+  ],
+  [
+   5.5,
+   0.5,
+   5.323254218582705,
+   1.0460680773726583
+  ],
+  [
+   5.5,
+   0.5,
+   5.410520681182422,
+   0.933434296116247
+  ],
+  [
+   5.5,
+   0.5,
+   5.497787143782138,
+   0.8485281374238567
+  ],
+  [
+   5.5,
+   0.5,
+   5.585053606381854,
+   0.8556481047732262
+  ],
+  [
+   5.5,
+   0.5,
+   5.672320068981571,
+   0.958895737591603
+  ],
+  [
+   5.5,
+   0.5,
+   5.759586531581288,
+   1.1000000000000003
+  ],
+  [
+   5.5,
+   0.5,
+   5.8468529941810035,
+   1.301410870733872
+  ],
+  [
+   5.5,
+   0.5,
+   5.934119456780721,
+   1.608092420089698
+  ],
+  [
+   5.5,
+   0.5,
+   6.021385919380437,
+   2.12503681783595
+  ],
+  [
+   5.5,
+   0.5,
+   6.1086523819801535,
+   2.1831672155543513
+  ],
+  [
+   5.5,
+   0.5,
+   6.19591884457987,
+   2.1582126507181965
+  ],
+  [
+   6.2,
+   -1.2,
+   0.0,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   0.08726646259971647,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   0.17453292519943295,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   0.2617993877991494,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   0.3490658503988659,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   0.4363323129985824,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   0.5235987755982988,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   0.6108652381980153,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   0.6981317007977318,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   0.7853981633974483,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   0.8726646259971648,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   0.9599310885968811,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   1.0471975511965976,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   1.1344640137963142,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   1.2217304763960306,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   1.308996938995747,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   1.3962634015954636,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   1.4835298641951802,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   1.5707963267948966,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   1.658062789394613,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   1.7453292519943295,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   1.8325957145940461,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   1.9198621771937623,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   2.007128639793479,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   2.0943951023931953,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   2.181661564992912,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   2.2689280275926285,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   2.356194490192345,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   2.443460952792061,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   2.530727415391778,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   2.617993877991494,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   2.705260340591211,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   2.792526803190927,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   2.879793265790644,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   2.9670597283903604,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   3.0543261909900767,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   3.141592653589793,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   3.2288591161895095,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   3.316125578789226,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   3.4033920413889422,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   3.490658503988659,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   3.577924966588375,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   3.6651914291880923,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   3.752457891787808,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   3.8397243543875246,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   3.9269908169872414,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   4.014257279586958,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   4.101523742186675,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   4.1887902047863905,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   4.276056667386107,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   4.363323129985824,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   4.4505895925855405,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   4.537856055185257,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   4.625122517784973,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   4.71238898038469,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   4.799655442984406,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   4.886921905584122,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   4.974188368183839,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   5.061454830783556,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   5.148721293383272,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   5.235987755982988,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   5.323254218582705,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   5.410520681182422,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   5.497787143782138,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   5.585053606381854,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   5.672320068981571,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   5.759586531581288,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   5.8468529941810035,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   5.934119456780721,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   6.021385919380437,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   6.1086523819801535,
+   0.0
+  ],
+  [
+   6.2,
+   -1.2,
+   6.19591884457987,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   0.3,
+   4.762719786998289
+  ]
+ ]
+}
