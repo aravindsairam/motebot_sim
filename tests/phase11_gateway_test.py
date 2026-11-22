@@ -62,6 +62,7 @@ DECODERS = {
     pb.DATA_CLEANED_AREA: pb.CleanedArea,
     pb.DATA_EXPLORATION_STATUS: pb.ExplorationStatus,
     pb.DATA_FRONTIERS: pb.Frontiers,
+    pb.DATA_ROBOT_SETTINGS: pb.RobotSettings,
     pb.DATA_REPLY: pb.Reply,
 }
 
