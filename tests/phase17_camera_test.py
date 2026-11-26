@@ -127,7 +127,9 @@ def main():
         gray = 0.299 * rgb[..., 0] + 0.587 * rgb[..., 1] + 0.114 * rgb[..., 2]
         camera.append((time.monotonic(), signature(gray)))
 
-    n.create_subscription(Image, CAMERA, on_image, rclpy.qos.qos_profile_sensor_data)
+    # Reliable, as the video node reads it: best-effort lost about 40 % of these 1 MB pictures, so
+    # this count of what the camera published was too low.
+    n.create_subscription(Image, CAMERA, on_image, rclpy.qos.QoSProfile(depth=5, reliability=rclpy.qos.ReliabilityPolicy.RELIABLE))
 
     def check(name, ok, detail):
         results.append({"check": name, "pass": bool(ok), "detail": detail})
