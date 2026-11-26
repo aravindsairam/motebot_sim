@@ -200,7 +200,7 @@ def main():
         secs = t1 - t0
         pose_rate = len(poses) / secs
         lidar = phone.messages(0x22, t0, t1)
-        check("rates", 9.0 <= pose_rate <= 11.0 and not lidar,
+        check("rates", 18.0 <= pose_rate <= 22.0 and not lidar,
               f"{pose_rate:.1f} positions per second over {secs:.1f} s; lidar point sets received: {len(lidar)}")
 
         # 4. the map while mapping
