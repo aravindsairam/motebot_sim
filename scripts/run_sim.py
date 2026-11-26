@@ -45,7 +45,12 @@ if not os.path.isfile(args.usd):
 # the start (it has no effect when set later), cameras above the home (the window's view) look
 # into the rooms while the robot's camera still sees a ceiling.
 CULL = ["--/rtx/hydra/faceCulling/enabled=true"] if hasattr(hl, "ceiling") else []
-simulation_app = SimulationApp({"headless": args.headless, "width": 1280, "height": 720, "extra_args": CULL})
+# Without a window nobody sees the window's own view of the world, and drawing it took about a
+# tenth of every frame. The robot's camera is drawn separately and is not affected. (The setting
+# only acts when headless.)
+simulation_app = SimulationApp(
+    {"headless": args.headless, "width": 1280, "height": 720, "extra_args": CULL, "disable_viewport_updates": True}
+)
 
 import carb  # noqa: E402
 import isaacsim.core.experimental.utils.app as app_utils  # noqa: E402
@@ -65,10 +70,11 @@ while stage_utils.is_stage_loading():
     simulation_app.update()
 
 # Keep physics time, timeline time and the app loop on the same clock so sim time tracks wall time.
+# The loop at the end of this file holds the frame rate itself (FramePacer): Isaac Sim's own
+# limiter times only its update, not the sensor messages published after it.
 settings = carb.settings.get_settings()
 settings.set_bool("/app/viewport/grid/enabled", False)  # the grid sits exactly on the floor and shows through
-settings.set_bool("/app/runLoops/main/rateLimitEnabled", True)
-settings.set_int("/app/runLoops/main/rateLimitFrequency", int(args.rate))
+settings.set_bool("/app/runLoops/main/rateLimitEnabled", False)
 settings.set_int("/persistent/simulation/minFrameRate", int(args.rate))
 SimulationManager.setup_simulation(dt=1.0 / args.rate, device="cpu")
 simulation_app.update()
@@ -120,10 +126,14 @@ print(
     flush=True,
 )
 
+from frame_pacer import FramePacer  # noqa: E402
+
+pacer = FramePacer(args.rate)
 while simulation_app.is_running() and not _stop:
     simulation_app.update()
     if app_utils.is_playing():
         publishers.step()
+    pacer.wait()
 
 publishers.shutdown()
 app_utils.stop()
